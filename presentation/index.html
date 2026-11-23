@@ -1,0 +1,1836 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>綠意森活：蕨類栽培入門 9 頁教學簡報</title>
+  <style>
+    :root {
+      --bg-main: #F4F7F4;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F8FAF7;
+      --primary-dark: #1A3826;
+      --primary-medium: #2C5E3B;
+      --primary-light: #4A8C5E;
+      --primary-mint: #E8F3EB;
+      --accent-ochre: #C77D32;
+      --accent-warm: #DF8F48;
+      --text-main: #1D2920;
+      --text-muted: #596B5F;
+      --text-light: #8E9E93;
+      --border-color: #E2EAE3;
+      --border-highlight: #C5D8C8;
+      --shadow-sm: 0 2px 8px rgba(26, 56, 38, 0.05);
+      --shadow-md: 0 8px 24px rgba(26, 56, 38, 0.08);
+      --shadow-lg: 0 16px 36px rgba(26, 56, 38, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    /* 頂部導航列 */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      height: 64px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 3px 10px rgba(44, 94, 59, 0.25);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 6px;
+      background: var(--primary-mint);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-icon {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-icon:hover {
+      background: var(--primary-mint);
+      border-color: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* 投影片主要舞台 */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      max-width: 1380px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .slide-deck {
+      width: 100%;
+      position: relative;
+      min-height: 640px;
+    }
+
+    .slide {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 36px 42px;
+      display: none;
+      opacity: 0;
+      transform: translateY(12px) scale(0.99);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: relative;
+    }
+
+    .slide.active {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* 投影片內容佈局 */
+    .slide-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide-header {
+      margin-bottom: 22px;
+    }
+
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .slide-category-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-medium);
+      background: var(--primary-mint);
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .slide-wiki-link {
+      font-size: 11px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace;
+      color: var(--text-muted);
+      background: var(--bg-main);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    .slide-source-tag {
+      font-size: 11px;
+      color: var(--accent-ochre);
+      font-weight: 600;
+    }
+
+    .slide-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .slide-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .point-card {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary-medium);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      transition: var(--transition);
+    }
+
+    .point-card:hover {
+      background: #FFFFFF;
+      border-color: var(--border-highlight);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(3px);
+    }
+
+    .point-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .point-num {
+      width: 20px;
+      height: 20px;
+      background: var(--primary-mint);
+      color: var(--primary-medium);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .point-desc {
+      font-size: 13.5px;
+      color: var(--text-main);
+      line-height: 1.55;
+    }
+
+    .point-desc strong {
+      color: var(--primary-dark);
+    }
+
+    .slide-footer-tip {
+      background: #FDF9F3;
+      border: 1px dashed var(--accent-ochre);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 12.5px;
+      color: #7D4C1E;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 投影片右側圖解區域 */
+    .slide-right {
+      display: flex;
+      flex-direction: column;
+      background: #FAFBF9;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .visual-header {
+      padding: 12px 18px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .visual-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .visual-slot-badge {
+      font-size: 10px;
+      font-family: monospace;
+      color: var(--text-light);
+      background: var(--bg-main);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .visual-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+    }
+
+    .visual-container svg {
+      width: 100%;
+      height: auto;
+      max-height: 440px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.03));
+    }
+
+    .visual-caption {
+      padding: 10px 16px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* 底部操作與導航列 */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+    }
+
+    .progress-bar-container {
+      flex: 1;
+      max-width: 320px;
+      height: 6px;
+      background: var(--border-color);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 0 24px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+      width: 11.11%;
+      transition: width 0.3s ease;
+    }
+
+    .slide-counter {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      min-width: 60px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-nav {
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(26, 56, 38, 0.2);
+    }
+
+    .btn-nav:hover:not(:disabled) {
+      background: var(--primary-medium);
+      transform: translateY(-1px);
+    }
+
+    .btn-nav:disabled {
+      background: var(--border-color);
+      color: var(--text-light);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-nav-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 1px solid var(--border-color);
+      box-shadow: none;
+    }
+
+    .btn-nav-outline:hover:not(:disabled) {
+      background: var(--primary-mint);
+      border-color: var(--primary-light);
+    }
+
+    .dot-navigation {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-color);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dot.active {
+      background: var(--primary-medium);
+      transform: scale(1.3);
+    }
+
+    .dot:hover {
+      background: var(--primary-light);
+    }
+
+    /* 總覽 Modal (Overview Grid) */
+    .overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 32, 23, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .overview-modal.active {
+      display: flex;
+    }
+
+    .overview-content {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      max-width: 1100px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .overview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .overview-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      cursor: pointer;
+      background: var(--bg-card-subtle);
+      transition: var(--transition);
+    }
+
+    .overview-card:hover {
+      border-color: var(--primary-light);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .overview-card.current {
+      border-color: var(--primary-medium);
+      border-width: 2px;
+      background: var(--primary-mint);
+    }
+
+    .overview-card-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary-medium);
+      margin-bottom: 6px;
+    }
+
+    .overview-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .overview-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* RWD 手機版響應式設計 */
+    @media (max-width: 980px) {
+      .slide.active {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 20px;
+      }
+      .slide-deck {
+        min-height: auto;
+      }
+      .slide-title {
+        font-size: 21px;
+      }
+      .slide-subtitle {
+        font-size: 13.5px;
+      }
+      .visual-container svg {
+        max-height: 280px;
+      }
+      .dot-navigation {
+        display: none;
+      }
+      header {
+        padding: 0 16px;
+      }
+      .brand-title {
+        font-size: 15px;
+      }
+      .brand-subtitle {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導航列 -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">蕨</div>
+      <div>
+        <span class="brand-title">綠意森活：蕨類栽培入門</span>
+        <span class="brand-subtitle">LLM Wiki 官方實證版</span>
+      </div>
+    </div>
+    <div class="header-controls">
+      <button class="btn-icon" id="btn-overview" title="投影片總覽 (按鍵 O)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>總覽 (O)</span>
+      </button>
+      <button class="btn-icon" id="btn-fullscreen" title="全螢幕切換 (按鍵 F)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        <span>全螢幕</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 投影片主要展演舞台 -->
+  <main>
+    <div class="slide-deck" id="deck">
+
+      <!-- ==================== SLIDE 1 ==================== -->
+      <section class="slide active" data-slide="1">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 1 · 基礎生物學</span>
+              <span class="slide-wiki-link">wiki/fern-biology-and-morphology.md</span>
+              <span class="slide-source-tag">[SRC-01]</span>
+            </div>
+            <h1 class="slide-title">蕨類不是開花植物：解開古老綠色精靈的生存密碼</h1>
+            <p class="slide-subtitle">認識不開花、不結果，依靠孢子與微薄水膜世代交替的古老維管束植物</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>跨越三億年的古老維管束植物</div>
+              <div class="point-desc">蕨類比恐龍更早出現在地球上，具備發達的木質部與韌皮部，但<strong>終生不開花、不結種子</strong>，完全依賴細微如塵的「孢子」進行繁衍。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>孢子體與配子體的世代交替</div>
+              <div class="point-desc">日常欣賞的翠綠大植株是「孢子體」；成熟孢子隨風飄落萌發為微小心形「原葉體（配子體）」，其上生有藏精器與藏卵器。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>受精限制：必須依賴「游動自由水膜」</div>
+              <div class="point-desc">雄性精子長有鞭毛，<strong>必須在液態水膜中擺動游向藏卵器</strong>完成受精。此生理演化特徵注定了蕨類對潮濕環境的終生依賴。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>生命力的象徵：捲旋幼葉（Fiddlehead）</div>
+              <div class="point-desc">新萌發的幼葉如問號般緊密蜷曲，隨細胞分裂逐步向外舒展伸長，是所有真蕨類植物最具活力的象徵標誌。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>新手思維轉換</strong>：種蕨類不要追求「催花」，重點在於欣賞葉片的姿態、羽狀層次與持久翠綠。
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="fern-life-cycle">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：蕨類世代交替與水膜受精</span>
+            <span class="visual-slot-badge">data-asset="fern-life-cycle"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4CAF50"/>
+                  <stop offset="100%" stop-color="#1B5E20"/>
+                </linearGradient>
+                <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#81D4FA"/>
+                  <stop offset="100%" stop-color="#0288D1"/>
+                </linearGradient>
+              </defs>
+              <!-- 背景圓圈示意世代循環 -->
+              <circle cx="250" cy="200" r="140" fill="none" stroke="#E0EBE2" stroke-width="3" stroke-dasharray="6,6"/>
+              
+              <!-- 孢子體區 (上) -->
+              <g transform="translate(250, 75)">
+                <rect x="-80" y="-35" width="160" height="70" rx="12" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+                <text x="0" y="-12" text-anchor="middle" font-weight="bold" fill="#1B5E20" font-size="14">成熟孢子體 (2n)</text>
+                <text x="0" y="8" text-anchor="middle" fill="#388E3C" font-size="11">羽狀複葉 / 捲旋幼葉</text>
+                <text x="0" y="24" text-anchor="middle" fill="#555" font-size="10">葉背長有孢子囊群</text>
+              </g>
+
+              <!-- 配子體區 (下) -->
+              <g transform="translate(250, 325)">
+                <rect x="-80" y="-35" width="160" height="70" rx="12" fill="#FFF8E1" stroke="#FFA000" stroke-width="2"/>
+                <text x="0" y="-12" text-anchor="middle" font-weight="bold" fill="#E65100" font-size="14">原葉體配子體 (1n)</text>
+                <text x="0" y="8" text-anchor="middle" fill="#F57C00" font-size="11">心形微小綠色薄片</text>
+                <text x="0" y="24" text-anchor="middle" fill="#777" font-size="10">藏精器 ♂ + 藏卵器 ♀</text>
+              </g>
+
+              <!-- 左箭頭：減數分裂與孢子釋放 -->
+              <path d="M 170 100 Q 100 200 170 300" fill="none" stroke="#2E7D32" stroke-width="3" marker-end="url(#arrow)"/>
+              <g transform="translate(90, 200)">
+                <text x="0" y="-6" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">孢子飄落 (R!)</text>
+                <circle cx="-15" cy="12" r="3" fill="#8D6E63"/>
+                <circle cx="0" cy="15" r="3.5" fill="#8D6E63"/>
+                <circle cx="15" cy="11" r="3" fill="#8D6E63"/>
+              </g>
+
+              <!-- 右側關鍵：自由水膜受精 (強調！) -->
+              <path d="M 330 300 Q 400 200 330 100" fill="none" stroke="#0288D1" stroke-width="3"/>
+              <g transform="translate(410, 200)">
+                <rect x="-65" y="-36" width="130" height="72" rx="8" fill="#E1F5FE" stroke="#0288D1" stroke-width="1.5"/>
+                <text x="0" y="-16" text-anchor="middle" font-weight="bold" fill="#0277BD" font-size="12">關鍵生殖限制</text>
+                <text x="0" y="2" text-anchor="middle" font-weight="bold" fill="#D32F2F" font-size="12">★ 自由水膜</text>
+                <text x="0" y="18" text-anchor="middle" fill="#555" font-size="10">精子游動受精</text>
+                <text x="0" y="30" text-anchor="middle" fill="#777" font-size="9">水是生命傳遞之橋</text>
+              </g>
+
+              <!-- 中央中心圖示 -->
+              <circle cx="250" cy="200" r="28" fill="#FFFFFF" stroke="#4CAF50" stroke-width="2"/>
+              <path d="M 245 190 Q 255 185 255 195 Q 255 205 245 205 Q 235 205 240 215 L 245 215" fill="none" stroke="#2E7D32" stroke-width="3" stroke-linecap="round"/>
+              <text x="250" y="222" text-anchor="middle" font-size="8" font-weight="bold" fill="#1B5E20">幼芽捲旋</text>
+            </svg>
+          </div>
+          <div class="visual-caption">蕨類繁衍世代交替：孢子釋放後在濕潤水膜完成受精，開啟新孢子體生命</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2 ==================== -->
+      <section class="slide" data-slide="2">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 2 · 核心澆水生理</span>
+              <span class="slide-wiki-link">wiki/watering-and-humidity-management.md</span>
+              <span class="slide-source-tag">[SRC-01][SRC-03][SRC-04][SRC-05]</span>
+            </div>
+            <h1 class="slide-title">破解「蕨類喜濕」最大迷思：土壤水 vs 空氣濕度</h1>
+            <p class="slide-subtitle">九成新手把蕨類養死，是因為將「耐濕」誤認為「耐泡水」</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>致命迷思：蕨類喜歡長在水裡？</div>
+              <div class="point-desc">原生蕨類雖喜生長於溪谷林下，但其根系緊貼通風岩壁或多孔落葉層，<strong>絕非泡在不通氣的死水淤泥中</strong>。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>空氣濕度（葉部）≠ 盆土濕度（根部）</div>
+              <div class="point-desc">
+                <strong>空氣濕度（葉部需求）</strong>：維持周圍 60%~80% 濕度以防小羽片水分過快蒸散焦邊。<br>
+                <strong>土壤水分（根部需求）</strong>：介質必須富含氧氣孔隙，以滿足根系旺盛的「有氧呼吸」。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>天天猛灌水的窒息代價</div>
+              <div class="point-desc">盆土若長期泡水過飽和，孔隙被水填死導致根系缺氧窒息；厭氧腐敗菌快速滋生，造成根系發黑腐爛、全株潰爛。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>黃金準則：乾濕循環與見乾見濕</div>
+              <div class="point-desc">手指摸入表土 1~2 公分，感覺鬆軟乾燥發白再行澆透；板植水苔變輕手再泡水，維持根部健康呼吸韻律。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>澆水黃金口訣</strong>：「葉面喜高濕，根部要呼吸；常向周圍噴霧，切忌天天猛烈泡水」。
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="humidity-vs-soil-water">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：根系有氧呼吸 vs 泡水窒息對比</span>
+            <span class="visual-slot-badge">data-asset="humidity-vs-soil-water"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 左邊：健康乾濕循環 -->
+              <g transform="translate(20, 20)">
+                <rect x="0" y="0" width="215" height="360" rx="12" fill="#F1F8F3" stroke="#2E7D32" stroke-width="2"/>
+                <rect x="0" y="0" width="215" height="36" rx="12" fill="#2E7D32"/>
+                <text x="107" y="24" text-anchor="middle" fill="#FFF" font-weight="bold" font-size="13">✓ 健康根系：乾濕交替</text>
+                
+                <!-- 花盆剖面 -->
+                <path d="M 40 100 L 175 100 L 160 250 L 55 250 Z" fill="#D7CCC8" stroke="#8D6E63" stroke-width="2"/>
+                <!-- 介質顆粒與空氣隙縫 -->
+                <circle cx="80" cy="140" r="12" fill="#8D6E63"/>
+                <circle cx="120" cy="135" r="14" fill="#A1887F"/>
+                <circle cx="145" cy="165" r="10" fill="#BCAAA4"/>
+                <circle cx="70" cy="180" r="13" fill="#A1887F"/>
+                <circle cx="105" cy="185" r="11" fill="#8D6E63"/>
+                <circle cx="135" cy="215" r="12" fill="#A1887F"/>
+                <circle cx="85" cy="225" r="10" fill="#8D6E63"/>
+                
+                <!-- 氧氣與根系 -->
+                <path d="M 90 120 Q 95 170 100 230" fill="none" stroke="#FFF" stroke-width="3"/>
+                <path d="M 100 170 Q 130 190 140 220" fill="none" stroke="#FFF" stroke-width="2.5"/>
+                <text x="107" y="295" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">介質富含微孔隙 O₂</text>
+                <text x="107" y="315" text-anchor="middle" font-size="10" fill="#388E3C">白根活躍、水分均勻流出</text>
+                <text x="107" y="335" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B5E20">★ 底孔通暢滴水</text>
+              </g>
+
+              <!-- 右邊：積水窒息腐爛 -->
+              <g transform="translate(265, 20)">
+                <rect x="0" y="0" width="215" height="360" rx="12" fill="#FDF2F2" stroke="#D32F2F" stroke-width="2"/>
+                <rect x="0" y="0" width="215" height="36" rx="12" fill="#D32F2F"/>
+                <text x="107" y="24" text-anchor="middle" fill="#FFF" font-weight="bold" font-size="13">✗ 致命錯誤：天天泡死水</text>
+                
+                <!-- 花盆剖面 -->
+                <path d="M 40 100 L 175 100 L 160 250 L 55 250 Z" fill="#90A4AE" stroke="#455A64" stroke-width="2"/>
+                <!-- 積水死水層 -->
+                <path d="M 45 150 L 170 150 L 160 250 L 55 250 Z" fill="#4FC3F7" fill-opacity="0.6"/>
+                <!-- 黑腐死根 -->
+                <path d="M 90 120 Q 80 180 75 230" fill="none" stroke="#212121" stroke-width="3"/>
+                <path d="M 100 160 Q 135 190 140 230" fill="none" stroke="#212121" stroke-width="3"/>
+                <text x="107" y="295" text-anchor="middle" font-size="11" font-weight="bold" fill="#D32F2F">孔隙全被死水淹死</text>
+                <text x="107" y="315" text-anchor="middle" font-size="10" fill="#C62828">根系窒息缺氧腐爛</text>
+                <text x="107" y="335" text-anchor="middle" font-size="11" font-weight="bold" fill="#B71C1C">★ 葉片萎蔫發黑脫落</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">對比解析：健康生長需要介質孔隙維持有氧呼吸，盆底長時間積水必引發爛根</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3 ==================== -->
+      <section class="slide" data-slide="3">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 3 · 介質資材心法</span>
+              <span class="slide-wiki-link">wiki/substrate-and-media.md</span>
+              <span class="slide-source-tag">[SRC-02][SRC-04][SRC-05]</span>
+            </div>
+            <h1 class="slide-title">根系呼吸是第一要務：蕨類介質調配心法</h1>
+            <p class="slide-subtitle">告別黏重田土，破除盆底鋪石排水迷思，調配呼吸型顆粒土</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>黏重田土的窒息風險</div>
+              <div class="point-desc">庭院挖取的黃黏土遇水板結成塊，乾燥時堅硬如石，澆水後完全阻斷孔隙空氣流動，蕨類細嫩毛根極易缺氧腐爛。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>三大常見調配材料特性</div>
+              <div class="point-desc">
+                <strong>泥炭土（Peat Moss）</strong>：微酸性、保水保肥佳，作為基礎有機保濕層。<br>
+                <strong>珍珠石（Perlite）</strong>：白色多孔膨脹顆粒，永久性撐開通氣孔隙。<br>
+                <strong>椰纖 / 樹皮</strong>：粗纖維結構，抗腐抗結塊，提供良好排水與空氣通道。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>常見盆植介質搭配示例（非單一通用比例）</div>
+              <div class="point-desc">地生盆植可參考「泥炭土 50% + 珍珠石 25% + 椰纖 25%（約 2:1:1 示例）」，需依品種生態調整，非一體適用；著生型（鹿角蕨）則需純水苔上板。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>破除盆底鋪石迷思（懸著水盤效應）</div>
+              <div class="point-desc">科學證實盆底墊粗石因質地突變會把「飽和積水層推高至根部」。正確做法是確保<strong>盆底孔洞通暢無阻</strong>、全盆均勻疏鬆介質，並倒除底盤積水。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>介質觀念升級</strong>：不要在盆底墊大石頭！均勻顆粒、無阻底孔與及時倒水盤才是排水核心。
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="aerated-potting-mix">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：均勻顆粒配土 vs 懸著水盤迷思</span>
+            <span class="visual-slot-badge">data-asset="aerated-potting-mix"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 左側：正確全盆顆粒透氣 -->
+              <g transform="translate(25, 25)">
+                <rect x="0" y="0" width="205" height="350" rx="10" fill="#F8FDF9" stroke="#2E7D32" stroke-width="1.5"/>
+                <text x="102" y="24" text-anchor="middle" font-weight="bold" fill="#1B5E20" font-size="12">✓ 正確：全盆均勻顆粒透氣</text>
+                
+                <!-- 花盆外框 -->
+                <path d="M 30 60 L 175 60 L 155 240 L 50 240 Z" fill="#EFEBE9" stroke="#795548" stroke-width="2"/>
+                
+                <!-- 均勻混和介質紋理 -->
+                <g fill="#A1887F">
+                  <circle cx="65" cy="85" r="5"/><circle cx="95" cy="90" r="4"/><circle cx="140" cy="80" r="6"/>
+                  <circle cx="80" cy="120" r="6"/><circle cx="125" cy="115" r="5"/><circle cx="150" cy="130" r="4"/>
+                  <circle cx="60" cy="155" r="5"/><circle cx="105" cy="150" r="6"/><circle cx="135" cy="165" r="5"/>
+                  <circle cx="75" cy="190" r="4"/><circle cx="115" cy="195" r="6"/><circle cx="145" cy="200" r="5"/>
+                </g>
+                <!-- 白色珍珠石亮點 -->
+                <g fill="#FFF" stroke="#CCC" stroke-width="0.8">
+                  <circle cx="80" cy="80" r="4"/><circle cx="120" cy="85" r="4.5"/><circle cx="65" cy="115" r="4"/>
+                  <circle cx="105" cy="115" r="4"/><circle cx="140" cy="110" r="3.5"/><circle cx="85" cy="150" r="4"/>
+                  <circle cx="125" cy="155" r="4"/><circle cx="65" cy="180" r="4.5"/><circle cx="100" cy="190" r="4"/>
+                  <circle cx="130" cy="185" r="3.5"/>
+                </g>
+                
+                <!-- 底孔排水平順水滴 -->
+                <rect x="90" y="240" width="25" height="4" fill="#333"/>
+                <path d="M 102 248 Q 102 265 102 270" stroke="#0288D1" stroke-width="2.5" stroke-dasharray="3,3"/>
+                <circle cx="102" cy="275" r="3" fill="#0288D1"/>
+                
+                <text x="102" y="300" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">底孔暢通 水珠自然流出</text>
+                <text x="102" y="320" text-anchor="middle" font-size="10" fill="#555">無積水線，根部通氣良好</text>
+              </g>
+
+              <!-- 右側：錯誤盆底鋪石 (懸著水盤效應) -->
+              <g transform="translate(265, 25)">
+                <rect x="0" y="0" width="205" height="350" rx="10" fill="#FFFBF5" stroke="#D32F2F" stroke-width="1.5"/>
+                <text x="102" y="24" text-anchor="middle" font-weight="bold" fill="#C62828" font-size="12">✗ 迷思：盆底鋪粗石排水</text>
+                
+                <!-- 花盆外框 -->
+                <path d="M 30 60 L 175 60 L 155 240 L 50 240 Z" fill="#EFEBE9" stroke="#795548" stroke-width="2"/>
+                
+                <!-- 上層細土 -->
+                <path d="M 35 65 L 170 65 L 163 155 L 42 155 Z" fill="#8D6E63"/>
+                
+                <!-- 懸著水盤飽和積水層！(危險區域) -->
+                <rect x="42" y="140" width="121" height="20" fill="#0288D1" fill-opacity="0.6"/>
+                <text x="102" y="154" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFF">★ 懸著水盤飽和積水層</text>
+                
+                <!-- 盆底粗碎石層 -->
+                <path d="M 42 160 L 163 160 L 155 240 L 50 240 Z" fill="#CFD8DC"/>
+                <ellipse cx="65" cy="190" rx="12" ry="8" fill="#78909C"/>
+                <ellipse cx="102" cy="185" rx="14" ry="9" fill="#90A4AE"/>
+                <ellipse cx="140" cy="190" rx="11" ry="8" fill="#78909C"/>
+                <ellipse cx="75" cy="215" rx="13" ry="8" fill="#90A4AE"/>
+                <ellipse cx="125" cy="220" rx="15" ry="9" fill="#78909C"/>
+                
+                <text x="102" y="295" text-anchor="middle" font-size="11" font-weight="bold" fill="#D32F2F">孔隙質地驟變</text>
+                <text x="102" y="315" text-anchor="middle" font-size="10" fill="#B71C1C">積水層被反推至根系區</text>
+                <text x="102" y="335" text-anchor="middle" font-size="9" fill="#777">(伊利諾大學推廣處科研證實)</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">科學破除迷思：盆底墊粗石會將飽和積水面向上推高，造成根系長期泡水缺氧</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 4 ==================== -->
+      <section class="slide" data-slide="4">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 4 · 入門代表 1</span>
+              <span class="slide-wiki-link">wiki/nephrolepis-biserrata-care.md</span>
+              <span class="slide-source-tag">[SRC-05]</span>
+            </div>
+            <h1 class="slide-title">入門代表 1：長葉腎蕨——抗旱耐候的生命力王者</h1>
+            <p class="slide-subtitle">初學者第一盆絕不失敗的綠色瀑布，認識走莖特徵與抗旱耐候生理</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>壯麗外觀與長羽葉瀑布</div>
+              <div class="point-desc">一回羽狀長葉自然向外或下垂展開可達 1 至 2 公尺，厚實革質葉面具光澤，抗風蒸散力強，為極受歡迎之懸吊觀葉蕨。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>生機旺盛的鐵絲狀橫走莖（Stolons）</div>
+              <div class="point-desc">短縮莖基部長出細長如鐵絲、被覆鱗片的橫向匍匐走莖，能在地表快速攀爬，節點處落地即萌生新株，擴展力極強。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>重要植物分類特徵：長葉腎蕨不具地下球莖</div>
+              <div class="point-desc">
+                <strong>國際植物分類釐清</strong>：長葉腎蕨（<em>N. biserrata</em>）<strong>不具備地下儲水球莖</strong>（Tubers absent）。<br>
+                儲水球莖（鳳凰蛋）屬於同屬之<strong>腎蕨（<em>N. cordifolia</em>）</strong>；長葉腎蕨耐旱係仰賴革質葉與緻密根系。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>栽培環境數據與管理指標</div>
+              <div class="point-desc">全日照至半日照皆可適應（以 <strong>50% 至 60% 遮陰設施</strong> 葉色最翠綠美觀）；生性強健，具有一定耐旱能力；澆水掌握「見乾見濕」即可良好生長。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>新手第一推薦</strong>：如果擔心自己常忘記澆水，生性強健耐候的長葉腎蕨是建立自信的最佳起點。
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="nephrolepis-fronds">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：長葉腎蕨羽葉、走莖與特徵釐清</span>
+            <span class="visual-slot-badge">data-asset="nephrolepis-fronds"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 懸掛盆栽 -->
+              <path d="M 190 80 L 310 80 L 290 140 L 210 140 Z" fill="#8D6E63" stroke="#5D4037" stroke-width="2"/>
+              <!-- 吊繩 -->
+              <line x1="200" y1="80" x2="250" y2="10" stroke="#795548" stroke-width="1.5"/>
+              <line x1="300" y1="80" x2="250" y2="10" stroke="#795548" stroke-width="1.5"/>
+              <circle cx="250" cy="10" r="4" fill="#3E2723"/>
+
+              <!-- 拱垂羽葉瀑布 (長達 1~2 公尺) -->
+              <path d="M 230 110 Q 140 130 90 220 Q 60 280 50 350" fill="none" stroke="#2E7D32" stroke-width="3.5"/>
+              <path d="M 270 110 Q 360 130 410 220 Q 440 280 450 350" fill="none" stroke="#2E7D32" stroke-width="3.5"/>
+              <path d="M 250 110 Q 220 180 200 290 Q 190 340 185 370" fill="none" stroke="#388E3C" stroke-width="3"/>
+              <path d="M 250 110 Q 280 180 300 290 Q 310 340 315 370" fill="none" stroke="#388E3C" stroke-width="3"/>
+
+              <!-- 羽片細節裝飾 -->
+              <g fill="#4CAF50">
+                <circle cx="120" cy="155" r="5"/><circle cx="100" cy="180" r="5"/><circle cx="80" cy="215" r="5"/>
+                <circle cx="68" cy="260" r="4.5"/><circle cx="58" cy="300" r="4"/>
+                <circle cx="380" cy="155" r="5"/><circle cx="400" cy="180" r="5"/><circle cx="420" cy="215" r="5"/>
+                <circle cx="432" cy="260" r="4.5"/><circle cx="442" cy="300" r="4"/>
+              </g>
+
+              <!-- 鐵絲狀走莖 (Stolons) 特徵標註 -->
+              <path d="M 220 130 Q 160 150 130 140 T 80 160" fill="none" stroke="#6D4C41" stroke-width="2" stroke-dasharray="4,2"/>
+              <path d="M 280 130 Q 340 150 370 140 T 420 160" fill="none" stroke="#6D4C41" stroke-width="2" stroke-dasharray="4,2"/>
+              
+              <!-- 標籤一：鐵絲狀橫走莖 -->
+              <g transform="translate(110, 110)">
+                <rect x="-50" y="-14" width="100" height="24" rx="4" fill="#FFF8E1" stroke="#FFA000" stroke-width="1"/>
+                <text x="0" y="2" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">鐵絲狀走莖 延伸</text>
+              </g>
+
+              <!-- 標籤二：革質長葉瀑布 -->
+              <g transform="translate(390, 110)">
+                <rect x="-55" y="-14" width="110" height="24" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+                <text x="0" y="2" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B5E20">革質長葉 1~2 公尺</text>
+              </g>
+
+              <!-- 核心科學澄清卡片 (底部) -->
+              <g transform="translate(250, 270)">
+                <rect x="-170" y="-45" width="340" height="90" rx="10" fill="#FFFFFF" stroke="#0288D1" stroke-width="1.5" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+                <text x="0" y="-24" text-anchor="middle" font-size="12" font-weight="bold" fill="#0277BD">★ 重要分類特徵精確區分</text>
+                <text x="-150" y="-3" font-size="11" fill="#2E7D32" font-weight="bold">長葉腎蕨 (N. biserrata)：</text>
+                <text x="0" y="-3" font-size="11" fill="#333">❌ 不具備地下球莖 (Tubers absent)</text>
+                <text x="-150" y="16" font-size="11" fill="#C62828" font-weight="bold">腎蕨 (N. cordifolia)：</text>
+                <text x="0" y="16" font-size="11" fill="#555">✓ 具地下儲水球莖 (俗稱鳳凰蛋)</text>
+                <text x="0" y="34" text-anchor="middle" font-size="10" fill="#78909C">(長葉腎蕨耐旱靠厚實革質葉與緻密鬚根，非靠球莖)</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">長葉腎蕨懸垂姿態與鐵絲走莖；權威植物分類證實其不具地下球莖</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 5 ==================== -->
+      <section class="slide" data-slide="5">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 5 · 入門代表 2</span>
+              <span class="slide-wiki-link">wiki/asplenium-antiquum-care.md</span>
+              <span class="slide-source-tag">[SRC-02]</span>
+            </div>
+            <h1 class="slide-title">入門代表 2：臺灣山蘇花——自帶集水漏斗的林下紳士</h1>
+            <p class="slide-subtitle">認識臺灣原生著生型巢蕨的漏斗形態適應，掌握 60%~80% 遮陰與防寒抗日燒技術</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>天然鳥巢漏斗與氣生根海綿</div>
+              <div class="point-desc">葉片放射狀斜上開展形成大漏斗，專門截留林冠飄落之枯枝落葉與雨露；基部密生海綿狀氣生根，保水吸肥效能極佳。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>原生三大山蘇分類辨識（依農業部文獻）</div>
+              <div class="point-desc">
+                <strong>臺灣山蘇花（<em>A. nidus</em>）</strong>：葉軸遠軸面（背面主脈）具顯著隆起<strong>中稜</strong>。<br>
+                <strong>山蘇花（<em>A. antiquum</em>）</strong>：葉軸遠軸面半圓無中稜，為臺灣最常見觀賞食用種。<br>
+                <strong>南洋巢蕨（<em>A. australasicum</em>）</strong>：中肋強烈銳角凸起如龍骨，多分布中海拔。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>光熱環境生理指標（臺南農改場研究）</div>
+              <div class="point-desc">
+                <strong>遮光率要求</strong>：平時維持 60% 至 80% 遮光率，<strong>夏季強光期建議遮光率至少達 70% 至 80%</strong>，嚴防日燒白化。<br>
+                <strong>溫度警報</strong>：適溫 20~30℃；<strong>低於 15℃ 生長停滯</strong>，10℃ 以下寒害，冬需避風保溫。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>著生介質調配與澆水要領</div>
+              <div class="point-desc">氣生根要求高通氣，切忌黏重田土；介質宜用粗樹皮、椰纖與水苔；清晨可適度向葉叢中心與周圍環境噴水增濕。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>生態小知識</strong>：山蘇花中心累積少許枯葉是其大自然吸收養分的正常現象，無需頻繁清空！
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="asplenium-funnel">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：山蘇花漏斗構造與葉軸中稜特徵</span>
+            <span class="visual-slot-badge">data-asset="asplenium-funnel"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 大樹幹背景 (著生環境) -->
+              <rect x="20" y="20" width="80" height="360" rx="6" fill="#5D4037" stroke="#3E2723" stroke-width="2"/>
+              <text x="60" y="200" text-anchor="middle" fill="#8D6E63" font-size="13" font-weight="bold" transform="rotate(-90 60 200)">樹幹著生生態</text>
+
+              <!-- 山蘇花鳥巢放射漏斗形 -->
+              <g transform="translate(100, 120)">
+                <!-- 海綿狀氣生根基底 -->
+                <ellipse cx="60" cy="140" rx="45" ry="30" fill="#4E342E" stroke="#3E2723" stroke-width="1.5"/>
+                <text x="60" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#D7CCC8">氣生根海綿層</text>
+
+                <!-- 放射狀杯狀葉片 -->
+                <path d="M 60 140 Q 30 50 10 10 Q 50 15 65 130" fill="#66BB6A" stroke="#2E7D32" stroke-width="1.5"/>
+                <path d="M 60 140 Q 80 40 100 5 Q 110 30 75 135" fill="#4CAF50" stroke="#1B5E20" stroke-width="1.5"/>
+                <path d="M 60 140 Q 120 60 160 20 Q 150 45 75 140" fill="#81C784" stroke="#2E7D32" stroke-width="1.5"/>
+                <path d="M 60 140 Q 150 100 200 80 Q 170 120 70 145" fill="#A5D6A7" stroke="#388E3C" stroke-width="1.5"/>
+
+                <!-- 雨水落葉截留箭頭 -->
+                <path d="M 100 -20 L 70 60" fill="none" stroke="#0288D1" stroke-width="2" stroke-dasharray="3,3"/>
+                <circle cx="68" cy="65" r="3" fill="#0288D1"/>
+                <text x="120" y="-10" font-size="10" fill="#0277BD" font-weight="bold">雨水落葉自然匯聚中心</text>
+              </g>
+
+              <!-- 右側：葉軸剖面分類特徵對照 (關鍵知識點) -->
+              <g transform="translate(320, 25)">
+                <rect x="0" y="0" width="165" height="345" rx="8" fill="#FFFFFF" stroke="#2E7D32" stroke-width="1.5"/>
+                <rect x="0" y="0" width="165" height="28" rx="8" fill="#2E7D32"/>
+                <text x="82" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">農業部三大山蘇辨識</text>
+
+                <!-- 1. 臺灣山蘇花 A. nidus -->
+                <g transform="translate(15, 45)">
+                  <text x="0" y="12" font-size="11" font-weight="bold" fill="#1B5E20">臺灣山蘇花 (A. nidus)</text>
+                  <!-- 葉背具隆起中稜剖面 -->
+                  <path d="M 20 40 Q 60 25 100 40 L 60 55 Z" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1.5"/>
+                  <polygon points="60,40 60,55" stroke="#D32F2F" stroke-width="2"/>
+                  <text x="60" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#D32F2F">★ 具顯著隆起中稜</text>
+                </g>
+
+                <!-- 2. 山蘇花 A. antiquum -->
+                <g transform="translate(15, 140)">
+                  <text x="0" y="12" font-size="11" font-weight="bold" fill="#1B5E20">山蘇花 (A. antiquum)</text>
+                  <!-- 葉背半圓形無中稜剖面 -->
+                  <path d="M 20 40 Q 60 25 100 40 Q 60 60 20 40" fill="#E8F5E9" stroke="#388E3C" stroke-width="1.5"/>
+                  <text x="60" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">半圓形，無中稜</text>
+                  <text x="60" y="85" text-anchor="middle" font-size="9" fill="#666">(市面最普遍觀賞食用種)</text>
+                </g>
+
+                <!-- 3. 南洋巢蕨 A. australasicum -->
+                <g transform="translate(15, 245)">
+                  <text x="0" y="12" font-size="11" font-weight="bold" fill="#1B5E20">南洋巢蕨</text>
+                  <path d="M 20 35 Q 60 20 100 35 L 60 62 Z" fill="#C8E6C9" stroke="#1B5E20" stroke-width="1.5"/>
+                  <text x="60" y="72" text-anchor="middle" font-size="10" font-weight="bold" fill="#1B5E20">強烈龍骨銳突</text>
+                  <text x="60" y="87" text-anchor="middle" font-size="9" fill="#777">多分布於中海拔霧林</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">山蘇花放射漏斗生態截留構造；依農業部資料精確標示葉軸背面中稜分類特徵</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 6 ==================== -->
+      <section class="slide" data-slide="6">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 6 · 入門代表 3</span>
+              <span class="slide-wiki-link">wiki/platycerium-care-and-mounting.md</span>
+              <span class="slide-source-tag">[SRC-03]</span>
+            </div>
+            <h1 class="slide-title">入門代表 3：鹿角蕨——手臉分工的空中雕塑</h1>
+            <p class="slide-subtitle">探索高度特化的著生二型葉，掌握環保綠竹板上板工法與乾濕循環泡盆術</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>高度特化的二型葉生態分工</div>
+              <div class="point-desc">
+                <strong>孢子葉（手）</strong>：直立或垂墜分叉如鹿角，表面密布白色星狀毛防曬抗蒸散，葉背生孢子。<br>
+                <strong>營養葉（臉）</strong>：圓盾形貼生板材；老葉乾枯褐化是木質海綿儲水構造，<strong>絕對不可剝除！</strong>
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>綠竹板環保上板工法（桃園農改場技術）</div>
+              <div class="point-desc">
+                疏伐綠竹板預先泡水 1 日吸飽水分，取代瀕危野生蛇木板。<br>
+                水苔均勻捏塑為半球形包覆根系；用魚線綁紮時<strong>務必避開正中央生長點（芽苞）</strong>。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>關鍵「乾濕循環」泡盆給水技術</div>
+              <div class="point-desc">遵守「水苔接近乾透（拿起來變輕手）才泡盆」原則，夏季約 3~4 天、冬季約 1 週泡透一次；若水苔表面長滿厚青苔為積水警訊。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>生育適溫與稀薄施肥</div>
+              <div class="point-desc">適溫 18~30℃（低溫極限 5℃）；生長季泡盆時可輪流施用花寶二號稀釋 2,000 倍之微薄水肥補充養分。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>新手核心禁忌</strong>：鹿角蕨變褐色的營養葉是保護根系的天然海綿，千萬不要當成枯葉剪掉！
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="platycerium-board-anatomy">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：綠竹板鹿角蕨上板構造解剖</span>
+            <span class="visual-slot-badge">data-asset="platycerium-board-anatomy"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 綠竹板 (國產疏伐材) -->
+              <g transform="translate(100, 30)">
+                <rect x="0" y="0" width="160" height="340" rx="8" fill="#A5D6A7" stroke="#2E7D32" stroke-width="2"/>
+                <line x1="20" y1="0" x2="20" y2="340" stroke="#81C784" stroke-width="1.5"/>
+                <line x1="45" y1="0" x2="45" y2="340" stroke="#81C784" stroke-width="1.5"/>
+                <line x1="80" y1="0" x2="80" y2="340" stroke="#81C784" stroke-width="1.5"/>
+                <line x1="115" y1="0" x2="115" y2="340" stroke="#81C784" stroke-width="1.5"/>
+                <line x1="140" y1="0" x2="140" y2="340" stroke="#81C784" stroke-width="1.5"/>
+                <text x="80" y="24" text-anchor="middle" font-size="11" font-weight="bold" fill="#1B5E20">疏伐綠竹板載體</text>
+              </g>
+
+              <!-- 水苔半球基質 -->
+              <g transform="translate(180, 200)">
+                <ellipse cx="0" cy="0" rx="75" ry="60" fill="#D7CCC8" stroke="#8D6E63" stroke-width="2"/>
+                <text x="0" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#5D4037">長纖維水苔包覆</text>
+                
+                <!-- 魚線纏繞路徑 (示範避開中心生長點) -->
+                <path d="M -60 -30 Q 0 -50 60 -30 Q 0 40 -60 -30" fill="none" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <path d="M -50 30 Q 0 60 50 30 Q 0 -40 -50 30" fill="none" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+                <!-- 圓盾形營養葉 (臉) -->
+                <path d="M -50 -40 C -70 10, -50 50, 0 55 C 50 50, 70 10, 50 -40 C 30 -60, -30 -60, -50 -40 Z" fill="#8D6E63" fill-opacity="0.8" stroke="#5D4037" stroke-width="2"/>
+                <text x="0" y="-15" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFF">枯褐色老臉</text>
+                <text x="0" y="-2" text-anchor="middle" font-size="8" fill="#FFF">(儲水海綿·嚴禁剝除)</text>
+
+                <!-- 正中心核心：生長點 (芽苞) 嚴格避線警示！ -->
+                <circle cx="0" cy="15" r="10" fill="#7CB342" stroke="#D32F2F" stroke-width="2.5"/>
+                <circle cx="0" cy="15" r="4" fill="#33691E"/>
+              </g>
+
+              <!-- 孢子葉 (手) 鹿角分叉 -->
+              <g transform="translate(180, 160)">
+                <path d="M -10 0 Q -40 -60 -70 -90 Q -60 -110 -80 -130 M -70 -90 Q -100 -110 -110 -140" fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+                <path d="M 10 0 Q 60 -60 100 -90 Q 120 -110 140 -130 M 100 -90 Q 90 -120 105 -150" fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+                <text x="130" y="-140" font-size="11" font-weight="bold" fill="#1B5E20">孢子葉 (手)</text>
+                <text x="130" y="-126" font-size="9" fill="#555">星狀毛防曬</text>
+              </g>
+
+              <!-- 右下方警告卡片：生長點避線 -->
+              <g transform="translate(340, 240)">
+                <rect x="-65" y="-40" width="130" height="80" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1.5"/>
+                <text x="0" y="-20" text-anchor="middle" font-size="11" font-weight="bold" fill="#C62828">⚠ 生長點安全禁忌</text>
+                <text x="0" y="-2" text-anchor="middle" font-size="10" fill="#B71C1C">魚線嚴禁勒過芽苞</text>
+                <text x="0" y="14" text-anchor="middle" font-size="9" fill="#555">芽點受傷整株死亡</text>
+                <text x="0" y="28" text-anchor="middle" font-size="9" font-weight="bold" fill="#D32F2F">固定綁線需從外圍繞過</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">鹿角蕨上板構造：手與臉二型葉分工，綠竹板綁紮時魚線務必嚴格避開中央生長點</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 7 ==================== -->
+      <section class="slide" data-slide="7">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 7 · 入門代表 4</span>
+              <span class="slide-wiki-link">wiki/adiantum-care.md</span>
+              <span class="slide-source-tag">[SRC-04]</span>
+            </div>
+            <h1 class="slide-title">入門代表 4：鐵線蕨——溫柔嬌貴的少女髮絲</h1>
+            <p class="slide-subtitle">薄葉蕨類的極限挑戰，學會半陰環境、常態微濕與碎石水盤輔助增濕術</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>精緻外觀與薄葉生理限制</div>
+              <div class="point-desc">深黑如鐵絲的纖細葉柄搭配蟬翼般的小羽片；角質層極薄、無儲水構造，在乾燥空氣或強烈風口下極易迅速脫水焦枯成脆片。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>官方養護原則（高雄區農改場）</div>
+              <div class="point-desc">
+                <strong>光照環境</strong>：適合室內明亮散射光或半陰處，<strong>嚴禁強烈直射日光</strong>。<br>
+                <strong>給水原則</strong>：根系細淺不耐乾，<strong>盆土需常態維持微濕潤</strong>，不可待全乾才澆水（但盆底切忌積水泡根）。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>居家輔助增濕技巧（碎石水盤法）</div>
+              <div class="point-desc">淺水盤鋪碎石注水至一半高度，盆栽置於碎石上（<strong>盆底孔洞嚴禁碰觸水面</strong>）。水分自然蒸發在周圍形成微氣候緩衝；屬輔助增濕，不保證特定濕度值。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>避開風口與剃頭重生法</div>
+              <div class="point-desc">切忌置於空調出風口。若葉片吹乾焦枯，只要根系健全，將枯葉齊基部全數剪除並套袋保濕，春季約 2 週即可萌發新羽葉！</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>急救信心建立</strong>：鐵線蕨葉子乾焦先別丟！只要根部沒爛，剪光枯葉置於陰涼高濕處，兩週內就能復活。
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="pebble-tray-setup">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：碎石水盤輔助增濕機制</span>
+            <span class="visual-slot-badge">data-asset="pebble-tray-setup"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 底層淺水盤 -->
+              <g transform="translate(100, 310)">
+                <rect x="0" y="0" width="300" height="40" rx="8" fill="#ECEFF1" stroke="#78909C" stroke-width="2"/>
+                <!-- 水位線 (高度一半) -->
+                <rect x="6" y="20" width="288" height="15" fill="#4FC3F7" fill-opacity="0.5"/>
+                <!-- 鋪滿碎石/發泡煉石 -->
+                <circle cx="25" cy="20" r="10" fill="#B0BEC5"/>
+                <circle cx="50" cy="18" r="11" fill="#90A4AE"/>
+                <circle cx="75" cy="22" r="9" fill="#B0BEC5"/>
+                <circle cx="100" cy="19" r="10" fill="#90A4AE"/>
+                <circle cx="125" cy="21" r="11" fill="#B0BEC5"/>
+                <circle cx="150" cy="18" r="10" fill="#90A4AE"/>
+                <circle cx="175" cy="22" r="9" fill="#B0BEC5"/>
+                <circle cx="200" cy="19" r="11" fill="#90A4AE"/>
+                <circle cx="225" cy="21" r="10" fill="#B0BEC5"/>
+                <circle cx="250" cy="18" r="9" fill="#90A4AE"/>
+                <circle cx="275" cy="20" r="10" fill="#B0BEC5"/>
+                <text x="150" y="32" text-anchor="middle" font-size="9" font-weight="bold" fill="#0277BD">水盤注水僅達碎石層一半</text>
+              </g>
+
+              <!-- 花盆平穩置於碎石上 (底部排水孔不碰水！) -->
+              <g transform="translate(175, 140)">
+                <path d="M 15 0 L 135 0 L 120 170 L 30 170 Z" fill="#D7CCC8" stroke="#6D4C41" stroke-width="2"/>
+                <!-- 盆底空隙強調箭頭 -->
+                <rect x="65" y="170" width="20" height="3" fill="#333"/>
+                <line x1="75" y1="173" x2="75" y2="185" stroke="#D32F2F" stroke-width="1.5"/>
+                
+                <!-- 盆內疏鬆土與鐵線蕨根系 -->
+                <path d="M 18 5 L 132 5 L 118 165 L 32 165 Z" fill="#8D6E63"/>
+                <!-- 黑色鐵絲細柄向上伸展 -->
+                <path d="M 75 80 Q 50 20 20 -40" fill="none" stroke="#212121" stroke-width="2"/>
+                <path d="M 75 80 Q 75 10 65 -60" fill="none" stroke="#212121" stroke-width="2"/>
+                <path d="M 75 80 Q 95 15 120 -50" fill="none" stroke="#212121" stroke-width="2"/>
+                <path d="M 75 80 Q 110 30 150 -20" fill="none" stroke="#212121" stroke-width="2"/>
+              </g>
+
+              <!-- 扇形薄小羽片 -->
+              <g fill="#81C784" stroke="#2E7D32" stroke-width="0.8">
+                <path d="M 195 90 Q 185 80 190 70 Q 205 75 195 90 Z"/>
+                <path d="M 235 70 Q 225 60 230 50 Q 245 55 235 70 Z"/>
+                <path d="M 285 85 Q 275 75 280 65 Q 295 70 285 85 Z"/>
+                <path d="M 320 115 Q 310 105 315 95 Q 330 100 320 115 Z"/>
+              </g>
+
+              <!-- 自然蒸發之微氣候水氣線 -->
+              <g stroke="#03A9F4" stroke-width="2" stroke-dasharray="3,3" fill="none">
+                <path d="M 140 300 Q 130 220 160 120"/>
+                <path d="M 360 300 Q 370 220 340 120"/>
+                <path d="M 110 300 Q 90 200 130 80"/>
+                <path d="M 390 300 Q 410 200 370 80"/>
+              </g>
+
+              <!-- 兩側標籤說明 -->
+              <g transform="translate(60, 220)">
+                <rect x="-40" y="-20" width="85" height="40" rx="6" fill="#E1F5FE" stroke="#0288D1" stroke-width="1"/>
+                <text x="2" y="-4" text-anchor="middle" font-size="10" font-weight="bold" fill="#0277BD">水氣自然蒸發</text>
+                <text x="2" y="10" text-anchor="middle" font-size="9" fill="#555">局部緩衝增濕</text>
+              </g>
+
+              <g transform="translate(425, 220)">
+                <rect x="-55" y="-20" width="110" height="45" rx="6" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1"/>
+                <text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="bold" fill="#C62828">★ 盆底孔未泡水</text>
+                <text x="0" y="10" text-anchor="middle" font-size="9" fill="#B71C1C">防止根系缺氧腐爛</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">碎石水盤輔助增濕法：盆底懸空不觸水，靠水氣自然蒸發營造局部濕度緩衝</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 8 ==================== -->
+      <section class="slide" data-slide="8">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 8 · 疑難急救指南</span>
+              <span class="slide-wiki-link">wiki/environmental-control-and-troubleshooting.md</span>
+              <span class="slide-source-tag">[SRC-01][SRC-02][SRC-03][SRC-04][SRC-05]</span>
+            </div>
+            <h1 class="slide-title">常見問題與新手急救指南：葉焦、爛根與病蟲害</h1>
+            <p class="slide-subtitle">建立科學排查邏輯，看懂植株求救訊號，掌握物理防治與安全處置原則</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>三大常見病徵精確鑑別診斷</div>
+              <div class="point-desc">
+                <strong>葉尖邊緣乾焦脆片（盆土仍濕）</strong>：空氣濕度過低或冷氣直吹 → 移離風口，啟用碎石水盤輔助增濕，切勿向盆土狂灌水。<br>
+                <strong>葉基軟爛發黑脫落</strong>：介質長期積水爛根 → 立即停水、通風、修剪黑腐根。<br>
+                <strong>整株發灰萎蔫（盆土輕如保麗龍）</strong>：極度缺水產生斥水性 → 執行泡盆底吸 5~10 分鐘。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>澆水時機與防病鐵則</div>
+              <div class="point-desc">堅持<strong>早晨澆水</strong>；<strong>嚴禁夜間向葉片與葉心大量噴水滯留</strong>。夜間水珠長時間滯留葉面，極易在溫暖不通風環境誘發真菌性炭疽病爆發。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>介殼蟲物理安全防除</div>
+              <div class="point-desc">介殼蟲常附生於葉背吸汁。初期蟲少時，使用棉花棒沾取 <strong>75% 藥用酒精</strong> 輕柔擦拭蟲體即可使其脫水瓦解；嚴重時剪除病葉並加強通風隔離。</div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>安全資材使用指引</div>
+              <div class="point-desc">避免擅自施用未經核准的高濃度化學藥劑；如需防治，建議選用葵無露、苦楝油等免登記植物保護資材，並嚴格遵循包裝官方推薦倍數。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            💡 <strong>急救心法</strong>：「養蕨七分靠通風，三分靠水分」。出問題時先查通風與光照，切勿盲目狂澆水施肥！
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="troubleshooting-guide">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：新手疑難病徵排查決策樹</span>
+            <span class="visual-slot-badge">data-asset="troubleshooting-guide"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 頂部起點 -->
+              <g transform="translate(250, 30)">
+                <rect x="-90" y="-18" width="180" height="36" rx="8" fill="#1B5E20" stroke="#2E7D32" stroke-width="2"/>
+                <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFF">發現植株外觀異常求救？</text>
+              </g>
+
+              <!-- 三條分支連線 -->
+              <path d="M 200 48 L 100 100" stroke="#78909C" stroke-width="2"/>
+              <path d="M 250 48 L 250 100" stroke="#78909C" stroke-width="2"/>
+              <path d="M 300 48 L 400 100" stroke="#78909C" stroke-width="2"/>
+
+              <!-- 分支 1：葉尖枯焦脆葉 -->
+              <g transform="translate(100, 130)">
+                <rect x="-80" y="-25" width="160" height="50" rx="8" fill="#FFF8E1" stroke="#FFA000" stroke-width="1.5"/>
+                <text x="0" y="-6" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">① 葉尖乾焦成脆片</text>
+                <text x="0" y="12" text-anchor="middle" font-size="9" fill="#777">(但盆土摸起來仍濕潤)</text>
+                <!-- 箭頭向下處方 -->
+                <line x1="0" y1="25" x2="0" y2="70" stroke="#FFA000" stroke-width="2" stroke-dasharray="3,3"/>
+                <!-- 處方卡 -->
+                <rect x="-80" y="70" width="160" height="120" rx="8" fill="#FFFFFF" stroke="#FFA000" stroke-width="1.5"/>
+                <text x="0" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">【空氣乾燥 / 風口吹】</text>
+                <text x="-70" y="112" font-size="9.5" fill="#333">✓ 移離冷氣/除濕機風口</text>
+                <text x="-70" y="130" font-size="9.5" fill="#333">✓ 啟用碎石水盤輔助增濕</text>
+                <text x="-70" y="148" font-size="9.5" fill="#333">✓ 剪除乾焦葉片促新芽</text>
+                <text x="-70" y="168" font-size="9.5" font-weight="bold" fill="#D32F2F">⛔ 嚴禁狂澆盆土！</text>
+              </g>
+
+              <!-- 分支 2：基部發黑軟爛 -->
+              <g transform="translate(250, 130)">
+                <rect x="-70" y="-25" width="140" height="50" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1.5"/>
+                <text x="0" y="-6" text-anchor="middle" font-size="11" font-weight="bold" fill="#C62828">② 葉基黑爛碰就掉</text>
+                <text x="0" y="12" text-anchor="middle" font-size="9" fill="#777">(盆土沉重積水臭味)</text>
+                <!-- 箭頭向下處方 -->
+                <line x1="0" y1="25" x2="0" y2="70" stroke="#D32F2F" stroke-width="2" stroke-dasharray="3,3"/>
+                <!-- 處方卡 -->
+                <rect x="-75" y="70" width="150" height="120" rx="8" fill="#FFFFFF" stroke="#D32F2F" stroke-width="1.5"/>
+                <text x="0" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#C62828">【窒息爛根 / 根腐病】</text>
+                <text x="-65" y="112" font-size="9.5" fill="#333">✓ 立即停止給水！</text>
+                <text x="-65" y="130" font-size="9.5" fill="#333">✓ 脫盆剪除黑腐軟爛死根</text>
+                <text x="-65" y="148" font-size="9.5" fill="#333">✓ 換入多孔顆粒疏鬆介質</text>
+                <text x="-65" y="168" font-size="9.5" font-weight="bold" fill="#1B5E20">✓ 置通風半陰處靜養</text>
+              </g>
+
+              <!-- 分支 3：整株灰萎假濕 -->
+              <g transform="translate(400, 130)">
+                <rect x="-80" y="-25" width="160" height="50" rx="8" fill="#E1F5FE" stroke="#0288D1" stroke-width="1.5"/>
+                <text x="0" y="-6" text-anchor="middle" font-size="11" font-weight="bold" fill="#0277BD">③ 葉片失色整株灰萎</text>
+                <text x="0" y="12" text-anchor="middle" font-size="9" fill="#777">(盆土輕如保麗龍硬塊)</text>
+                <!-- 箭頭向下處方 -->
+                <line x1="0" y1="25" x2="0" y2="70" stroke="#0288D1" stroke-width="2" stroke-dasharray="3,3"/>
+                <!-- 處方卡 -->
+                <rect x="-80" y="70" width="160" height="120" rx="8" fill="#FFFFFF" stroke="#0288D1" stroke-width="1.5"/>
+                <text x="0" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#0277BD">【極度缺水 / 介質斥水】</text>
+                <text x="-70" y="112" font-size="9.5" fill="#333">✓ 上方澆水會沿裂縫流掉</text>
+                <text x="-70" y="130" font-size="9.5" font-weight="bold" fill="#0288D1">✓ 執行泡盆底吸 5~10分</text>
+                <text x="-70" y="148" font-size="9.5" fill="#333">✓ 徹底瀝乾滴水再放回</text>
+                <text x="-70" y="168" font-size="9.5" fill="#555">✓ 24 小時內羽葉回挺</text>
+              </g>
+
+              <!-- 底部防病金句 -->
+              <g transform="translate(250, 350)">
+                <rect x="-210" y="-15" width="420" height="30" rx="6" fill="#F1F8E9" stroke="#33691E" stroke-width="1"/>
+                <text x="0" y="5" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#33691E">★ 防病核心：堅持早晨澆水，夜間絕不向葉心積水噴霧！</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">科學診斷路徑：根據具體病徵直擊病因，落實物理急救與環境改善</div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9 ==================== -->
+      <section class="slide" data-slide="9">
+        <div class="slide-left">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-category-tag">單元 9 · 總結選株清單</span>
+              <span class="slide-wiki-link">wiki/INDEX.md</span>
+              <span class="slide-source-tag">[SRC-01]~[SRC-05]</span>
+            </div>
+            <h1 class="slide-title">新手選株總結與日常照護清單：四種蕨類一目了然</h1>
+            <p class="slide-subtitle">量身打造適合居家的蕨類綠意角落，掌握光熱水介質四大關鍵矩陣</p>
+          </div>
+
+          <div class="card-list">
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">1</span>四種代表性蕨類栽培矩陣總覽</div>
+              <div class="point-desc">
+                <strong>長葉腎蕨</strong>：光照寬容度高（50%~60% 遮陰佳）｜透氣配土｜耐乾旱強健｜初學者第一推薦。<br>
+                <strong>臺灣山蘇花</strong>：林下散射光（60%~80% 遮陰，夏季 70%~80%）｜樹皮椰纖｜微濕高濕｜優雅耐陰首選。<br>
+                <strong>鹿角蕨</strong>：明亮通風散光｜綠竹板+水苔｜乾濕循環泡盆｜立體綠雕塑。<br>
+                <strong>鐵線蕨</strong>：半陰散射光｜保濕疏鬆土+碎石水盤輔助增濕｜常態微濕｜精緻柔美挑戰。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">2</span>居家空間對應選株指南</div>
+              <div class="point-desc">
+                <strong>通風朝陽陽台</strong> → 首選 <strong>長葉腎蕨</strong>（抗風耐曬）。<br>
+                <strong>客廳明亮窗邊</strong> → 首選 <strong>山蘇花</strong> 或 <strong>鹿角蕨</strong>（立體有型）。<br>
+                <strong>通風明亮高濕窗台</strong> → 挑戰 <strong>鐵線蕨</strong>（享受高濕柔美）。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">3</span>日常照護三大黃金法則</div>
+              <div class="point-desc">
+                <strong>一觸</strong>：手指摸表土乾濕，忌按日曆盲灌。<br>
+                <strong>二看</strong>：清晨看葉片挺拔光澤，代表水分呼吸平衡。<br>
+                <strong>三通</strong>：永遠保持生長環境空氣流通，通風是防爛根與病害的根本。
+              </div>
+            </div>
+            <div class="point-card">
+              <div class="point-title"><span class="point-num">4</span>LLM Wiki 知識庫探索與延伸學習</div>
+              <div class="point-desc">本簡報所有栽培規範均完整編譯自農業部研究文獻，更多數據與管理細節歡迎查閱本專案 Wiki 筆記與全域索引 <code>INDEX.md</code>。</div>
+            </div>
+          </div>
+
+          <div class="slide-footer-tip">
+            🌿 <strong>結語金句</strong>：「讓環境適應植物，而不是強迫植物適應你的作息。願你在綠蕨陪伴中享受恬靜森活！」
+          </div>
+        </div>
+
+        <div class="slide-right" data-asset="fern-selection-matrix">
+          <div class="visual-header">
+            <span class="visual-title">🎨 教學圖解：四大入門蕨類綜合對比矩陣</span>
+            <span class="visual-slot-badge">data-asset="fern-selection-matrix"</span>
+          </div>
+          <div class="visual-container">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- 四象限底框 -->
+              <!-- 象限 1：長葉腎蕨 (左上) -->
+              <g transform="translate(15, 20)">
+                <rect x="0" y="0" width="225" height="165" rx="8" fill="#F1F8F5" stroke="#2E7D32" stroke-width="1.5"/>
+                <rect x="0" y="0" width="225" height="26" rx="8" fill="#2E7D32"/>
+                <text x="112" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">長葉腎蕨 (生命力之王)</text>
+                <text x="15" y="48" font-size="10.5" fill="#1B5E20" font-weight="bold">光照：</text><text x="55" y="48" font-size="10" fill="#333">全日照至半陰 (50~60% 遮陰佳)</text>
+                <text x="15" y="70" font-size="10.5" fill="#1B5E20" font-weight="bold">水分：</text><text x="55" y="70" font-size="10" fill="#333">見乾見濕，具一定耐旱力</text>
+                <text x="15" y="92" font-size="10.5" fill="#1B5E20" font-weight="bold">介質：</text><text x="55" y="92" font-size="10" fill="#333">疏鬆排水土 (忌盆底積水)</text>
+                <text x="15" y="114" font-size="10.5" fill="#1B5E20" font-weight="bold">特徵：</text><text x="55" y="114" font-size="10" fill="#C62828" font-weight="bold">不具地下球莖；走莖繁衍</text>
+                <text x="112" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">★ 新手防挫折第一首選</text>
+              </g>
+
+              <!-- 象限 2：臺灣山蘇花 (右上) -->
+              <g transform="translate(260, 20)">
+                <rect x="0" y="0" width="225" height="165" rx="8" fill="#F3F8F3" stroke="#388E3C" stroke-width="1.5"/>
+                <rect x="0" y="0" width="225" height="26" rx="8" fill="#388E3C"/>
+                <text x="112" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">臺灣山蘇花 (林下紳士)</text>
+                <text x="15" y="48" font-size="10.5" fill="#2E7D32" font-weight="bold">光照：</text><text x="55" y="48" font-size="10" fill="#333">60~80% 遮陰 (夏季 70~80%)</text>
+                <text x="15" y="70" font-size="10.5" fill="#2E7D32" font-weight="bold">溫度：</text><text x="55" y="70" font-size="10" fill="#333">適溫 20~30℃ (防 15℃ 停滯)</text>
+                <text x="15" y="92" font-size="10.5" fill="#2E7D32" font-weight="bold">介質：</text><text x="55" y="92" font-size="10" fill="#333">樹皮、椰纖、水苔高通氣</text>
+                <text x="15" y="114" font-size="10.5" fill="#2E7D32" font-weight="bold">特徵：</text><text x="55" y="114" font-size="10" fill="#333">鳥巢漏斗截留；葉軸具中稜</text>
+                <text x="112" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#388E3C">★ 耐陰大氣室內首選</text>
+              </g>
+
+              <!-- 象限 3：鹿角蕨 (左下) -->
+              <g transform="translate(15, 205)">
+                <rect x="0" y="0" width="225" height="165" rx="8" fill="#FFFDF8" stroke="#C77D32" stroke-width="1.5"/>
+                <rect x="0" y="0" width="225" height="26" rx="8" fill="#C77D32"/>
+                <text x="112" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">鹿角蕨 (空中綠雕塑)</text>
+                <text x="15" y="48" font-size="10.5" fill="#B26A20" font-weight="bold">載體：</text><text x="55" y="48" font-size="10" fill="#333">疏伐綠竹板 + 100% 水苔</text>
+                <text x="15" y="70" font-size="10.5" fill="#B26A20" font-weight="bold">給水：</text><text x="55" y="70" font-size="10" fill="#333">水苔微乾再泡盆 (乾濕循環)</text>
+                <text x="15" y="92" font-size="10.5" fill="#B26A20" font-weight="bold">禁忌：</text><text x="55" y="92" font-size="10" fill="#D32F2F" font-weight="bold">老臉絕不剝除！避開生長點</text>
+                <text x="15" y="114" font-size="10.5" fill="#B26A20" font-weight="bold">適溫：</text><text x="55" y="114" font-size="10" fill="#333">18~30℃ (冬季低溫極限 5℃)</text>
+                <text x="112" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#B26A20">★ 立體美學上板工藝</text>
+              </g>
+
+              <!-- 象限 4：鐵線蕨 (右下) -->
+              <g transform="translate(260, 205)">
+                <rect x="0" y="0" width="225" height="165" rx="8" fill="#F4FAFD" stroke="#0288D1" stroke-width="1.5"/>
+                <rect x="0" y="0" width="225" height="26" rx="8" fill="#0288D1"/>
+                <text x="112" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFF">鐵線蕨 (嬌貴少女髮絲)</text>
+                <text x="15" y="48" font-size="10.5" fill="#0277BD" font-weight="bold">光照：</text><text x="55" y="48" font-size="10" fill="#333">室內明亮散射光 (忌強光直曬)</text>
+                <text x="15" y="70" font-size="10.5" fill="#0277BD" font-weight="bold">水分：</text><text x="55" y="70" font-size="10" fill="#333">盆土常態微濕潤 (忌待全乾)</text>
+                <text x="15" y="92" font-size="10.5" fill="#0277BD" font-weight="bold">技巧：</text><text x="55" y="92" font-size="10" fill="#333">碎石水盤輔助增濕；避開風口</text>
+                <text x="15" y="114" font-size="10.5" fill="#0277BD" font-weight="bold">急救：</text><text x="55" y="114" font-size="10" fill="#333">剪除乾焦葉套袋保濕可復活</text>
+                <text x="112" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#0288D1">★ 享受細緻呵護的高手挑戰</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">四大入門蕨類綜合對應矩陣：清晰掌握光、水、介質與居家定位</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 底部操作與導航列 -->
+  <footer>
+    <div class="nav-buttons">
+      <button class="btn-nav btn-nav-outline" id="btn-prev" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>上一頁</span>
+      </button>
+      <button class="btn-nav" id="btn-next">
+        <span>下一頁</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <!-- 圓點導航 -->
+    <div class="dot-navigation" id="dots-container"></div>
+
+    <!-- 進度條與計數器 -->
+    <div style="display: flex; align-items: center;">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="slide-counter" id="counter">1 / 9</div>
+    </div>
+  </footer>
+
+  <!-- 投影片總覽 Modal (按鍵 O 或按鈕開啟) -->
+  <div class="overview-modal" id="overview-modal">
+    <div class="overview-content">
+      <div class="overview-header">
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">投影片全域總覽 (Overview)</h2>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">點擊任意卡片可直接跳轉至該單元；按 ESC 或 O 鍵關閉</p>
+        </div>
+        <button class="btn-icon" id="btn-close-overview">關閉 ✕</button>
+      </div>
+      <div class="overview-grid" id="overview-grid">
+        <!-- 由 JS 自動生成 9 張總覽卡片 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 原生 JavaScript 互動控制 (零外部依賴、純離線執行) -->
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      let currentSlide = 1;
+
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const counter = document.getElementById('counter');
+      const progressBar = document.getElementById('progress-bar');
+      const dotsContainer = document.getElementById('dots-container');
+      const overviewModal = document.getElementById('overview-modal');
+      const btnOverview = document.getElementById('btn-overview');
+      const btnCloseOverview = document.getElementById('btn-close-overview');
+      const overviewGrid = document.getElementById('overview-grid');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+
+      // 初始化圓點導航
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 1) dot.classList.add('active');
+        dot.setAttribute('title', '跳至第 ' + i + ' 頁');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+
+      // 初始化總覽卡片
+      slides.forEach((slide, index) => {
+        const slideNum = index + 1;
+        const title = slide.querySelector('.slide-title').innerText;
+        const subtitle = slide.querySelector('.slide-subtitle').innerText;
+        const category = slide.querySelector('.slide-category-tag').innerText;
+
+        const card = document.createElement('div');
+        card.classList.add('overview-card');
+        if (slideNum === 1) card.classList.add('current');
+        card.innerHTML = `
+          <div class="overview-card-num">${category} · 頁 ${slideNum}</div>
+          <div class="overview-card-title">${title}</div>
+          <div class="overview-card-desc">${subtitle}</div>
+        `;
+        card.addEventListener('click', () => {
+          goToSlide(slideNum);
+          closeOverview();
+        });
+        overviewGrid.appendChild(card);
+      });
+
+      function updateSlide() {
+        slides.forEach((slide, idx) => {
+          if (idx + 1 === currentSlide) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        // 更新按鈕狀態
+        btnPrev.disabled = currentSlide === 1;
+        btnNext.disabled = currentSlide === totalSlides;
+
+        // 更新計數器與進度條
+        counter.textContent = `${currentSlide} / ${totalSlides}`;
+        const progressPercent = (currentSlide / totalSlides) * 100;
+        progressBar.style.width = `${progressPercent}%`;
+
+        // 更新導航圓點
+        document.querySelectorAll('.dot').forEach((dot, idx) => {
+          if (idx + 1 === currentSlide) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+
+        // 更新總覽卡片狀態
+        document.querySelectorAll('.overview-card').forEach((card, idx) => {
+          if (idx + 1 === currentSlide) {
+            card.classList.add('current');
+          } else {
+            card.classList.remove('current');
+          }
+        });
+      }
+
+      function goToSlide(n) {
+        if (n >= 1 && n <= totalSlides) {
+          currentSlide = n;
+          updateSlide();
+        }
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          currentSlide++;
+          updateSlide();
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 1) {
+          currentSlide--;
+          updateSlide();
+        }
+      }
+
+      function toggleOverview() {
+        overviewModal.classList.toggle('active');
+      }
+
+      function closeOverview() {
+        overviewModal.classList.remove('active');
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.log('Fullscreen request failed:', err);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      // 事件綁定
+      btnPrev.addEventListener('click', prevSlide);
+      btnNext.addEventListener('click', nextSlide);
+      btnOverview.addEventListener('click', toggleOverview);
+      btnCloseOverview.addEventListener('click', closeOverview);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      overviewModal.addEventListener('click', (e) => {
+        if (e.target === overviewModal) closeOverview();
+      });
+
+      // 鍵盤導航支援
+      document.addEventListener('keydown', (e) => {
+        if (overviewModal.classList.contains('active')) {
+          if (e.key === 'Escape' || e.key === 'o' || e.key === 'O') {
+            closeOverview();
+          }
+          return;
+        }
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ':
+            e.preventDefault();
+            nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'PageUp':
+            e.preventDefault();
+            prevSlide();
+            break;
+          case 'Home':
+            e.preventDefault();
+            goToSlide(1);
+            break;
+          case 'End':
+            e.preventDefault();
+            goToSlide(totalSlides);
+            break;
+          case 'o':
+          case 'O':
+            toggleOverview();
+            break;
+          case 'f':
+          case 'F':
+            toggleFullscreen();
+            break;
+          case '1': case '2': case '3': case '4': case '5':
+          case '6': case '7': case '8': case '9':
+            goToSlide(parseInt(e.key, 10));
+            break;
+        }
+      });
+
+      // 手機觸控滑動支援 (Touch Swipe)
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const threshold = 50;
+        if (touchEndX < touchStartX - threshold) {
+          nextSlide();
+        } else if (touchEndX > touchStartX + threshold) {
+          prevSlide();
+        }
+      }
+
+      // 首次初始化
+      updateSlide();
+    })();
+  </script>
+</body>
+</html>
+
